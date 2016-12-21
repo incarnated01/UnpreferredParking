@@ -3,7 +3,7 @@ package com.theironyard.charlotte;
 /**
  * Created by stephenwilliamson on 12/20/16.
  */
-public class Vehicle {
+public class Cars {
     private String make;
     private String model;
     private int size;
@@ -41,7 +41,7 @@ public class Vehicle {
         this.funds = funds;
     }
 
-    public Vehicle(String make, String model, int size, int funds) {
+    public Cars(String make, String model, int size, int funds) {
 
         this.make = make;
         this.model = model;

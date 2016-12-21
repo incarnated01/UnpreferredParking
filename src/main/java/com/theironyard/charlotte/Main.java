@@ -29,11 +29,11 @@ public class Main {
         parkingLots.add(new Lot("2", 15, 5));
         parkingLots.add(new Lot("3", 15, 5));
 
-        Spark.get("/lots",(request, response)->{
+        Spark.get("/lots", (request, response) -> {
             System.out.println("The current status of the lots: ");
             return serializer.serialize(parkingLots);
         });
-        Spark.post("/cars", (request, response)-> {
+        Spark.post("/cars", (request, response) -> {
             System.out.println("");
             System.out.println("");
 
