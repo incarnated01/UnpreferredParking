@@ -49,14 +49,14 @@ public class Main {
             for (Lot lot : lots) {
                 if (lot.getId() == parking.getId()) {
                     if (parking.getSize() * lot.getRate() <= parking.getFunds()
-                            && parking.getSize() < lot.getCapacity() - lot.getInLot().size()){
+                            && lot.getCapacity() - parking.getSize() > 0){
                         lot.getInLot().add(new Cars(parking.getMake(), parking.getModel(),parking.getSize(),parking.getFunds()));
                     }
                 }
             }
             return "";
         });
-        
+
     }
 }
 
