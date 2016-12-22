@@ -31,10 +31,10 @@ public class Main {
         List<Cars> lot2 = new ArrayList<>();
         List<Cars> lot3 = new ArrayList<>();
 
-        parkingLots.add(new Lot("0", 15, 5, lot0));
-        parkingLots.add(new Lot("1", 15, 5, lot1));
-        parkingLots.add(new Lot("2", 15, 5, lot2));
-        parkingLots.add(new Lot("3", 15, 5, lot3));
+        parkingLots.add(new Lot(0, 15, 5, lot0));
+        parkingLots.add(new Lot(1, 15, 5, lot1));
+        parkingLots.add(new Lot(2, 15, 5, lot2));
+        parkingLots.add(new Lot(3, 15, 5, lot3));
 
         List<Lot> lots = new ArrayList<>();
 

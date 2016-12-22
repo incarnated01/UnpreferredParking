@@ -6,16 +6,16 @@ import java.util.List;
  * Created by stephenwilliamson on 12/20/16.
  */
 public class Lot {
-    private String id;
+    private int id;
     private int capacity;
     private int rate;
     private List<Cars> inLot;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -43,7 +43,7 @@ public class Lot {
         this.inLot = inLot;
     }
 
-    public Lot(String id, int capacity, int rate, List<Cars> inLot) {
+    public Lot(int id, int capacity, int rate, List<Cars> inLot) {
 
         this.id = id;
         this.capacity = capacity;
