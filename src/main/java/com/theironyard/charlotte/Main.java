@@ -1,12 +1,14 @@
 package com.theironyard.charlotte;
 
-import com.google.gson.JsonParser;
 import jodd.json.JsonSerializer;
+import jodd.json.JsonParser;
+
 
 
 import spark.Spark;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     private static ArrayList<Lot> parkingLots = new ArrayList<>();
@@ -24,21 +26,37 @@ public class Main {
             response.header("Access-Control-Allow-Origin", "*");
         });
 
-        parkingLots.add(new Lot("0", 15, 5));
-        parkingLots.add(new Lot("1", 15, 5));
-        parkingLots.add(new Lot("2", 15, 5));
-        parkingLots.add(new Lot("3", 15, 5));
+        List<Cars> lot0 = new ArrayList<>();
+        List<Cars> lot1 = new ArrayList<>();
+        List<Cars> lot2 = new ArrayList<>();
+        List<Cars> lot3 = new ArrayList<>();
+
+        parkingLots.add(new Lot("0", 15, 5, lot0, false));
+        parkingLots.add(new Lot("1", 15, 5, lot1, false));
+        parkingLots.add(new Lot("2", 15, 5, lot2, false));
+        parkingLots.add(new Lot("3", 15, 5, lot3, false));
+
+        List<Lot> lots = new ArrayList<>();
+
 
         Spark.get("/lots", (request, response) -> {
             System.out.println("The current status of the lots: ");
-            return serializer.serialize(parkingLots);
+            return serializer.deep(true).serialize(parkingLots);
         });
-        Spark.post("/cars", (request, response) -> {
-            System.out.println("");
-            System.out.println("");
+        Spark.post("/park", (request, response) -> {
+            Park parking = parser.parse(request.body(), Park.class);
 
+            for (Lot lot : lots) {
+                if (lot.getId() == parking.getId()) {
+                    if (parking.getSize() * lot.getRate() <= parking.getFunds()
+                            && parking.getSize() < lot.getCapacity() - lot.getInLot().size()){
+                        lot.getInLot().add(new Cars(parking.getMake(), parking.getModel(),parking.getSize(),parking.getFunds()));
+                    }
+                }
+            }
             return "";
         });
+        
     }
 }
 
