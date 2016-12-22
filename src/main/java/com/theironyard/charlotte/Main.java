@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static ArrayList<Lot> parkingLots = new ArrayList<>();
+    private static List<Lot> parkingLots = new ArrayList<>();
     private static JsonParser parser = new JsonParser();
     private static JsonSerializer serializer = new JsonSerializer();
 
@@ -31,24 +31,23 @@ public class Main {
         List<Cars> lot2 = new ArrayList<>();
         List<Cars> lot3 = new ArrayList<>();
 
-        parkingLots.add(new Lot(0, 15, 5, lot0));
-        parkingLots.add(new Lot(1, 15, 5, lot1));
-        parkingLots.add(new Lot(2, 15, 5, lot2));
-        parkingLots.add(new Lot(3, 15, 5, lot3));
+        Main.parkingLots.add(new Lot(0, 15, 5, lot0));
+        Main.parkingLots.add(new Lot(1, 15, 5, lot1));
+        Main.parkingLots.add(new Lot(2, 15, 5, lot2));
+        Main.parkingLots.add(new Lot(3, 15, 5, lot3));
 
-        List<Lot> lots = new ArrayList<>();
 
         lot0.add(new Cars("jeep", "renegade", 2, 66));
 
 
         Spark.get("/lots", (request, response) -> {
             System.out.println("The current status of the lots: ");
-            return serializer.deep(true).serialize(parkingLots);
+            return serializer.deep(true).serialize(Main.parkingLots);
         });
         Spark.post("/park", (request, response) -> {
             Park parking = parser.parse(request.body(), Park.class);
 
-            for (Lot lot : lots) {
+            for (Lot lot : parkingLots) {
                 if (lot.getId() == parking.getId()) {
                     if (parking.getSize() * lot.getRate() <= parking.getFunds()
                             && lot.getCapacity() - parking.getSize() >= 0){
