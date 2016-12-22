@@ -58,4 +58,7 @@ public class Park {
         this.size = size;
         this.funds = funds;
     }
+    public Park(){
+
+    }
 }
