@@ -31,7 +31,7 @@ public class Main {
         List<Cars> lot2 = new ArrayList<>();
         List<Cars> lot3 = new ArrayList<>();
 
-        Main.parkingLots.add(new Lot(0, 15, 5, lot0));
+        Main.parkingLots.add(new Lot(0, 25, 5, lot0));
         Main.parkingLots.add(new Lot(1, 15, 5, lot1));
         Main.parkingLots.add(new Lot(2, 15, 5, lot2));
         Main.parkingLots.add(new Lot(3, 15, 5, lot3));
