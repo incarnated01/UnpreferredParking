@@ -10,7 +10,6 @@ public class Lot {
     private int capacity;
     private int rate;
     private List<Cars> inLot;
-    private boolean noVacancy;
 
     public String getId() {
         return id;
@@ -44,20 +43,11 @@ public class Lot {
         this.inLot = inLot;
     }
 
-    public boolean isNoVacancy() {
-        return noVacancy;
-    }
-
-    public void setNoVacancy(boolean noVacancy) {
-        this.noVacancy = noVacancy;
-    }
-
-    public Lot(String id, int capacity, int rate, List<Cars> inLot, boolean noVacancy) {
+    public Lot(String id, int capacity, int rate, List<Cars> inLot) {
 
         this.id = id;
         this.capacity = capacity;
         this.rate = rate;
         this.inLot = inLot;
-        this.noVacancy = noVacancy;
     }
 }
